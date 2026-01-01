@@ -1,0 +1,7 @@
+homeclient.js
+influx.js
+influxData.js
+node_modules/
+API Files/
+.env
+Dockerfile
