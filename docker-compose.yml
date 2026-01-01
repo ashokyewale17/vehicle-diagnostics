@@ -1,14 +1,23 @@
-version: '3.8'
 services:
   app:
     build: .
     container_name: vehicle-app
     restart: always
-    environment:
-      - NODE_ENV=production
-      - PORT=3000
+    env_file:
+      - .env
+    depends_on:
+      - mongo
     ports:
       - "3000:3000"
+    networks:
+      - webnet
+
+  mongo:
+    image: mongo:6
+    container_name: vehicle-mongo
+    restart: always
+    volumes:
+      - mongo_data:/data/db
     networks:
       - webnet
 
@@ -24,6 +33,9 @@ services:
       - app
     networks:
       - webnet
+
+volumes:
+  mongo_data:
 
 networks:
   webnet:
