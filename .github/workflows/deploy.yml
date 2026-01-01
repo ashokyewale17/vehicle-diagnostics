@@ -21,7 +21,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           target: "/home/ubuntu/app/"
           overwrite: true
-          source: "Dockerfile,docker-compose.yml,server.js,package.json,package-lock.json,controllers/**,models/**,routes/**,config/**,.env.example"
+          source: "Dockerfile,docker-compose.yml,server.js,package.json,package-lock.json,controllers/**,models/**,routes/**,config/**"
 
       - name: Deploy on EC2
         uses: appleboy/ssh-action@v0.1.10
