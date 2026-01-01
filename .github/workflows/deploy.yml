@@ -30,8 +30,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/ashokyewale17/node:18-alpine
-            ghcr.io/ashokyewale17/node:latest
+            ghcr.io/ashokyewale17/vehicle-diagnostics:18-alpine
+            ghcr.io/ashokyewale17/vehicle-diagnostics:latest
 
   deploy-to-ec2:
     needs: build-and-push
