@@ -29,7 +29,9 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/ashokyewale17/node:18-alpine:latest
+          tags: |
+            ghcr.io/ashokyewale17/node:18-alpine
+            ghcr.io/ashokyewale17/node:latest
 
   deploy-to-ec2:
     needs: build-and-push
