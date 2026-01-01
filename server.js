@@ -2,28 +2,23 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
 
+const connectDB = require('./config/db');
+
 const app = express();
+
+connectDB();
 
 app.use(cors());
 app.use(express.json());
 
-const conectDB = require('./config/db');
-
-conectDB();
-
-app.get('/',(req,res) => {
+app.get('/', (req, res) => {
   res.send('API is running...');
-})
+});
 
 app.use('/api/devices', require('./routes/devices_route'));
 app.use('/api/device-configs', require('./routes/device_config_route'));
 
-
-app.listen(process.env.PORT || 5000, () => {
-  console.log(`Server running on port ${process.env.PORT || 5000}`);
-}
-);
-
-
-
-
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
