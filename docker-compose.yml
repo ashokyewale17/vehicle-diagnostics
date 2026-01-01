@@ -18,6 +18,8 @@ services:
     image: mongo:6
     container_name: vehicle-mongo
     restart: always
+    environment:
+      MONGO_INITDB_DATABASE: vehicle_db
     volumes:
       - mongo_data:/data/db
     networks:
