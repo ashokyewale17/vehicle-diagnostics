@@ -17,6 +17,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/devices', require('./routes/devices_route'));
 app.use('/api/device-configs', require('./routes/device_config_route'));
+app.use('/api/influxdb', require('./routes/influxdb_route'));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
