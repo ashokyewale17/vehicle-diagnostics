@@ -1,5 +1,8 @@
 services:
   app:
+    depends_on:
+      mongo:
+        condition: service_healthy
     build: .
     container_name: vehicle-app
     restart: always
@@ -18,8 +21,14 @@ services:
     restart: always
     volumes:
       - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     networks:
       - webnet
+
 
   nginx:
     image: nginx:stable-alpine
