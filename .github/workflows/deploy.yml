@@ -13,7 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # ---------- COPY PROJECT TO EC2 ----------
       - name: Upload project to EC2
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -22,19 +21,8 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           target: "/home/ubuntu/app/"
           overwrite: true
-          source: |
-            Dockerfile
-            docker-compose.yml
-            server.js
-            package.json
-            package-lock.json
-            controllers/**
-            models/**
-            routes/**
-            config/**
-            .env.example
+          source: "Dockerfile,docker-compose.yml,server.js,package.json,package-lock.json,controllers/**,models/**,routes/**,config/**,.env.example"
 
-      # ---------- BUILD & RUN ON EC2 ----------
       - name: Deploy on EC2
         uses: appleboy/ssh-action@v0.1.10
         with:
@@ -47,5 +35,4 @@ jobs:
             docker compose down || true
             docker compose build
             docker compose up -d
-            docker image prune -f
-            echo "🚀 Backend deployed successfully"
+            echo "🚀 Deployment successful"
