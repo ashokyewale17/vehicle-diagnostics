@@ -4,4 +4,3 @@ influxData.js
 node_modules/
 API Files/
 .env
-Dockerfile
