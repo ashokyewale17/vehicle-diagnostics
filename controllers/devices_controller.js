@@ -14,7 +14,7 @@ exports.getAllDevices = async (req,res) => {
 exports.getDeviceByVCUID = async (req,res) => {
     try{
         const vcuid = req.params.vcuid;
-        const device = await deviceModel.findOne({ device_vcuid: vcuid });
+        const device = await deviceModel.findOne({ device_vcu: vcuid });
         if(!device){
             return res.status(404).json({message: 'Device Not Found'});
         }

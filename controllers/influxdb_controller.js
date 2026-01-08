@@ -1,4 +1,4 @@
-const { influxDB, org, bucket } = require('../influx');
+const { influxDB, org, bucket } = require('../config/influx');
 
 
 exports.getAvailableMetrics = async (req, res) => {
