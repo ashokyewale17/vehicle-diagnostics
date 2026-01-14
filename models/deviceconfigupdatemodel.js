@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const deviceConfigSchema = mongoose.Schema(  {
     device_mac: { type: String, required: true },
+    device_vcu: {type: String, required: true },
     device_config_ssid: { type: String, required: true },
     device_config_password: { type: String, required: true },
     device_rtc: { type: Boolean, default: false },
